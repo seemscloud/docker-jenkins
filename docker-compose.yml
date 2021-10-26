@@ -1,11 +1,11 @@
 version: '3.9'
 
 services:
-  jenkins:
-    container_name: jenkins
-    hostname: jenkins
+  jenkins-master:
+    container_name: jenkins-master
+    hostname: jenkins-master
     build:
-      context: ./jenkins
+      context: ./jenkins-master
       args:
         DOCKER_VERSION: 20.10.8
     ports:
