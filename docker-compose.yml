@@ -1,20 +1,18 @@
 version: '3.9'
 
 services:
-  jenkins-master:
-    container_name: jenkins-master
-    hostname: jenkins-master
+  jenkins:
+    container_name: jenkins
+    hostname: jenkins
     build:
-      context: ./jenkins-master
+      context: ./jenkins
       args:
         DOCKER_VERSION: 20.10.8
     ports:
-      - "8080:8080"
-    environment:
-      JAVA_OPTS: "-Xmx2048m"
+      - "80:8080"
     volumes:
-      - jenkins-data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - jenkins-data:/var/jenkins_home:rw
 
 volumes:
   jenkins-data:
